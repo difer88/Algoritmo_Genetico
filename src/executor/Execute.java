@@ -44,6 +44,13 @@ public class Execute {
         System.out.println("Spaces: " + spaces);
         System.out.println("Values: " + values);
         System.out.println("Chromosome: " + indiv_01.getChromosome());
+        System.out.println("\nCargo components: \n");
+        for(int i =0; i < productList.size(); i++) {
+        	if(indiv_01.getChromosome().get(i) == "1") {
+        		System.out.println("Name: " + productList.get(i).getName() 
+        									+ " R$ " + productList.get(i).getValue());
+        	}
+        }
 		
 	}
 

@@ -8,6 +8,7 @@ public class Individual {
 	private List spaces = new ArrayList<>();
 	private List values = new ArrayList<>();
 	private Double spaceLimit;
+	private Double usedSpace;
 	private Double evaluationNote;
 	private int generation;
 	private List chromosome = new ArrayList<>();
@@ -17,6 +18,7 @@ public class Individual {
 		this.values = values;
 		this.spaceLimit = spaceLimit;
 		this.evaluationNote = 0.0;
+		this.usedSpace = 0.0;
 		this.generation = 0;
 		
 		for(int i = 0; i < spaces.size(); i++) {
@@ -27,6 +29,33 @@ public class Individual {
 			}
 		}
 		
+	}
+	
+	public void evaluation() {
+		Double grade = 0.0;
+		Double sumOfSpaces = 0.0;
+		
+		for(int i = 0; i < this.chromosome.size(); i++) {
+			if(this.chromosome.get(i).equals("1")) {
+				grade += (Double) this.values.get(i);
+				sumOfSpaces += (Double) this.spaces.get(i);
+			}
+		}
+		
+		if(sumOfSpaces > this.spaceLimit) {
+			grade = 1.0;
+		}
+		
+		this.evaluationNote = grade;
+		this.usedSpace = sumOfSpaces;
+	}
+	
+	public Double getUsedSpace() {
+		return usedSpace;
+	}
+
+	public void setUsedSpace(Double usedSpace) {
+		this.usedSpace = usedSpace;
 	}
 
 	public List getSpaces() {
