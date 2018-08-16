@@ -31,6 +31,10 @@ public class Individual {
 		
 	}
 	
+	/**
+	 * Method responsible for evaluating the sum of values of the objects 
+	 * attached to the chromosome, returning its value in R$
+	 */
 	public void evaluation() {
 		Double grade = 0.0;
 		Double sumOfSpaces = 0.0;
@@ -48,6 +52,41 @@ public class Individual {
 		
 		this.evaluationNote = grade;
 		this.usedSpace = sumOfSpaces;
+	}
+	
+	/**
+	 * Method responsible for creating the crossover between two chromosomes
+	 * 
+	 * @param anotherIndividual second individual used to perform the crossover
+	 * @return a list of children generated through the crossover method
+	 */
+	public List crossover(Individual anotherIndividual) {
+		
+		int cut = (int) Math.round(Math.random() * this.chromosome.size());
+		
+		List child_01 = new ArrayList<>();
+		
+		child_01.addAll(anotherIndividual.getChromosome().subList(0, cut));
+		child_01.addAll(this.chromosome.subList(cut, this.chromosome.size()));
+		
+		List child_02 = new ArrayList<>();
+		
+		child_02.addAll(this.chromosome.subList(0, cut));
+		child_02.addAll(anotherIndividual.getChromosome().subList(cut, this.chromosome.size()));
+		
+		List<Individual> children = new ArrayList();
+		
+		children.add(new Individual(this.spaces, this.values, this.spaceLimit));
+		children.add(new Individual(this.spaces, this.values, this.spaceLimit));
+		
+		children.get(0).setChromosome(child_01);
+		children.get(0).setGeneration(this.generation + 1);
+		
+		children.get(1).setChromosome(child_02);
+		children.get(1).setGeneration(this.generation + 1);
+		
+		return children;
+		
 	}
 	
 	public Double getUsedSpace() {

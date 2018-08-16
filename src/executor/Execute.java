@@ -6,6 +6,15 @@ import java.util.List;
 import bean.Individual;
 import bean.Product;
 
+/**
+* Application built in Java and based on genetic algorithm and artificial intelligence 
+* to calculate the maximum number of items to be loaded in a vehicle, according to its 
+* value and volume.
+*
+* @author  Diego Fernandes
+* @version 1.0
+* @since   2018-08-09 
+*/
 public class Execute {
 
 	public static void main(String[] args) {
@@ -37,21 +46,45 @@ public class Execute {
         	names.add(product.getName());
         }
         
+        /*
+         * Print: 
+         * - Espaço utilizado por produto
+         * - Valores de todos os produtos
+         * - Cromossomo gerado para a carga
+         
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Values: " + values);
+        System.out.println("\nCargo components: \n");
+        
+        for(int i = 0; i < productList.size(); i++) {
+            if(indiv_01.getChromosome().get(i) == "1") {
+                System.out.println("Name: " + productList.get(i).getName() 
+                                            + " R$ " + productList.get(i).getValue());
+            }
+        }*/
+
         Double limit = 3.0;
         
         Individual indiv_01 = new Individual(spaces, values, limit);
+
+        indiv_01.evaluation();
         
-        System.out.println("Spaces: " + spaces);
-        System.out.println("Values: " + values);
-        System.out.println("Chromosome: " + indiv_01.getChromosome());
-        System.out.println("\nCargo components: \n");
-        for(int i =0; i < productList.size(); i++) {
-        	if(indiv_01.getChromosome().get(i) == "1") {
-        		System.out.println("Name: " + productList.get(i).getName() 
-        									+ " R$ " + productList.get(i).getValue());
-        	}
-        }
-		
+        System.out.println("Indivíduo 1:");
+        System.out.println("\nChromosome: " + indiv_01.getChromosome());
+        System.out.println("\nEvaluation Note: " + indiv_01.getEvaluationNote());
+        System.out.println("Used space: " + indiv_01.getUsedSpace());
+
+        Individual indiv_02 = new Individual(spaces, values, limit);
+        
+        indiv_02.evaluation();
+
+        System.out.println("\nIndivíduo 2:");
+        System.out.println("\nChromosome: " + indiv_02.getChromosome());
+        System.out.println("\nEvaluation Note: " + indiv_02.getEvaluationNote());
+        System.out.println("Used space: " + indiv_02.getUsedSpace());
+
+        indiv_01.crossover(indiv_02);
+        
 	}
 
 }
