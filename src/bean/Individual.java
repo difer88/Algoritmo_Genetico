@@ -3,6 +3,13 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* 
+*
+* @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
+* @version 1.0
+* @since   2018-08-09 
+*/
 public class Individual {
 	
 	private List spaces = new ArrayList<>();
@@ -13,6 +20,13 @@ public class Individual {
 	private int generation;
 	private List chromosome = new ArrayList<>();
 	
+	/**
+	 * Constructor of the Individual class and initialization of its chromosome
+	 * 
+	 * @param spaces list containing the spaces used by the items
+	 * @param values list containing the values of the items
+	 * @param spaceLimit limit of space used by the cargo
+	 */
 	public Individual(List spaces, List values, Double spaceLimit) {
 		this.spaces = spaces;
 		this.values = values;
@@ -28,7 +42,6 @@ public class Individual {
 				this.chromosome.add("1");
 			}
 		}
-		
 	}
 	
 	/**
@@ -86,6 +99,26 @@ public class Individual {
 		children.get(1).setGeneration(this.generation + 1);
 		
 		return children;
+		
+	}
+	
+	public Individual mutation(Double mutationRate) {
+		
+		System.out.println("Before mutation: " + this.chromosome);
+		
+		for(int i = 0; i < this.chromosome.size(); i++) {
+			if(Math.random() < mutationRate) {
+				if(this.chromosome.get(i).equals("1")) {
+					this.chromosome.set(i, "0");
+				} else {
+					this.chromosome.set(i, "1");
+				}
+			}
+		}
+		
+		System.out.println("After mutation:  " + this.chromosome);
+		
+		return this;
 		
 	}
 	

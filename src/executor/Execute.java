@@ -7,11 +7,9 @@ import bean.Individual;
 import bean.Product;
 
 /**
-* Application built in Java and based on genetic algorithm and artificial intelligence 
-* to calculate the maximum number of items to be loaded in a vehicle, according to its 
-* value and volume.
+* 
 *
-* @author  Diego Fernandes
+* @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
 * @version 1.0
 * @since   2018-08-09 
 */
@@ -84,6 +82,9 @@ public class Execute {
         System.out.println("Used space: " + indiv_02.getUsedSpace());
 
         indiv_01.crossover(indiv_02);
+        
+        indiv_01.mutation(0.05);
+        indiv_02.mutation(0.05);
         
 	}
 

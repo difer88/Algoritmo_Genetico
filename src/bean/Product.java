@@ -1,5 +1,12 @@
 package bean;
 
+/**
+* 
+*
+* @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
+* @version 1.0
+* @since   2018-08-09 
+*/
 public class Product {
 
 	private String name;
