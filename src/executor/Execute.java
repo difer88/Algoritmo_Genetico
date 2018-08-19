@@ -5,6 +5,7 @@ import java.util.List;
 
 import bean.Individual;
 import bean.Product;
+import function.GeneticAlgorithm;
 
 /**
 * 
@@ -44,47 +45,20 @@ public class Execute {
         	names.add(product.getName());
         }
         
-        /*
-         * Print: 
-         * - Espaço utilizado por produto
-         * - Valores de todos os produtos
-         * - Cromossomo gerado para a carga
-         
-        System.out.println("Spaces: " + spaces);
-        System.out.println("Values: " + values);
-        System.out.println("\nCargo components: \n");
-        
-        for(int i = 0; i < productList.size(); i++) {
-            if(indiv_01.getChromosome().get(i) == "1") {
-                System.out.println("Name: " + productList.get(i).getName() 
-                                            + " R$ " + productList.get(i).getValue());
-            }
-        }*/
-
         Double limit = 3.0;
         
-        Individual indiv_01 = new Individual(spaces, values, limit);
-
-        indiv_01.evaluation();
+        int populationSize = 20;
         
-        System.out.println("Indivíduo 1:");
-        System.out.println("\nChromosome: " + indiv_01.getChromosome());
-        System.out.println("\nEvaluation Note: " + indiv_01.getEvaluationNote());
-        System.out.println("Used space: " + indiv_01.getUsedSpace());
-
-        Individual indiv_02 = new Individual(spaces, values, limit);
+        GeneticAlgorithm ga = new GeneticAlgorithm(populationSize);
         
-        indiv_02.evaluation();
-
-        System.out.println("\nIndivíduo 2:");
-        System.out.println("\nChromosome: " + indiv_02.getChromosome());
-        System.out.println("\nEvaluation Note: " + indiv_02.getEvaluationNote());
-        System.out.println("Used space: " + indiv_02.getUsedSpace());
-
-        indiv_01.crossover(indiv_02);
+        ga.initializesPopulation(spaces, values, limit);
         
-        indiv_01.mutation(0.05);
-        indiv_02.mutation(0.05);
+        for(int i = 0; i < ga.getPopulationSize(); i++) {
+        	System.out.println("\n*** Individual " + i + " ***" + 
+        						"\nSpaces = " + ga.getPopulation().get(i).getSpaces() + 
+        						"\nValues = " + ga.getPopulation().get(i).getValues() + 
+        						"\nChromossome = " + ga.getPopulation().get(i).getChromosome());
+        }
         
 	}
 
