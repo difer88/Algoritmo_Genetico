@@ -53,12 +53,16 @@ public class Execute {
         
         ga.initializesPopulation(spaces, values, limit);
         
-        for(int i = 0; i < ga.getPopulationSize(); i++) {
-        	System.out.println("\n*** Individual " + i + " ***" + 
-        						"\nSpaces = " + ga.getPopulation().get(i).getSpaces() + 
-        						"\nValues = " + ga.getPopulation().get(i).getValues() + 
-        						"\nChromossome = " + ga.getPopulation().get(i).getChromosome());
+        for(Individual ind : ga.getPopulation()) {
+        	ind.evaluation();
         }
+        
+        ga.ordenatePopulation();
+        
+        ga.bestIndividual(ga.getPopulation().get(0));
+        
+        System.out.println("Melhor solução para o problema: " + ga.getBestSolution().getChromosome() + 
+        					" Nota: " + ga.getBestSolution().getEvaluationNote());
         
 	}
 

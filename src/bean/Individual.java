@@ -10,7 +10,7 @@ import java.util.List;
 * @version 1.0
 * @since   2018-08-09 
 */
-public class Individual {
+public class Individual implements Comparable<Individual>{
 	
 	private List spaces = new ArrayList<>();
 	private List values = new ArrayList<>();
@@ -176,6 +176,15 @@ public class Individual {
 
 	public void setChromosome(List chromosome) {
 		this.chromosome = chromosome;
+	}
+
+	@Override
+	public int compareTo(Individual ind) {
+		if(this.evaluationNote > ind.getEvaluationNote()) {
+			return -1;
+		} else if(this.evaluationNote < ind.getEvaluationNote()) {
+			return 1;
+		} return 0;
 	}
 	
 }

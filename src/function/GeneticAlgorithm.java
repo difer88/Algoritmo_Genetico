@@ -1,6 +1,7 @@
 package function;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import bean.Individual;
@@ -13,7 +14,6 @@ public class GeneticAlgorithm {
 	private Individual bestSolution;
 	
 	public GeneticAlgorithm(int populationSize) {
-		super();
 		this.populationSize = populationSize;
 	}
 	
@@ -25,6 +25,16 @@ public class GeneticAlgorithm {
 		
 		this.bestSolution = this.population.get(0);
 		
+	}
+	
+	public void bestIndividual(Individual ind) {
+		if(ind.getEvaluationNote() > this.getBestSolution().getEvaluationNote()) {
+			this.bestSolution = ind;
+		}
+	}
+	
+	public void ordenatePopulation() {
+		Collections.sort(this.population);
 	}
 
 	public int getPopulationSize() {
