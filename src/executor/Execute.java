@@ -61,8 +61,13 @@ public class Execute {
         
         ga.bestIndividual(ga.getPopulation().get(0));
         
-        System.out.println("Melhor solução para o problema: " + ga.getBestSolution().getChromosome() + 
-        					" Nota: " + ga.getBestSolution().getEvaluationNote());
+        Double sum = ga.evaluationSum();
+        
+        for(int i = 0; i < ga.getPopulation().size() / 2; i++) {
+        	int parent01 = ga.selectParent(sum);
+        	int parent02 = ga.selectParent(sum);
+        	
+        }
         
 	}
 

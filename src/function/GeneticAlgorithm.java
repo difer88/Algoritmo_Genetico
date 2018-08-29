@@ -17,6 +17,13 @@ public class GeneticAlgorithm {
 		this.populationSize = populationSize;
 	}
 	
+	/**
+	 * Method responsible for initializes the population
+	 * 
+	 * @param spaces list containing the spaces used by the products in the cargo
+	 * @param values list containing the values of the products in the cargo
+	 * @param spaceLimit cargo limit
+	 */
 	public void initializesPopulation(List spaces, List values, Double spaceLimit) {
 		
 		for(int i = 0; i < this.populationSize; i++) {
@@ -24,15 +31,52 @@ public class GeneticAlgorithm {
 		}
 		
 		this.bestSolution = this.population.get(0);
-		
 	}
 	
-	public void bestIndividual(Individual ind) {
-		if(ind.getEvaluationNote() > this.getBestSolution().getEvaluationNote()) {
-			this.bestSolution = ind;
+	/**
+	 * Method responsible for analyzing the best solution between two individuals
+	 * 
+	 * @param anotherIndividual second individual used to perform the analysis
+	 */
+	public void bestIndividual(Individual anotherIndividual) {
+		if(anotherIndividual.getEvaluationNote() > this.getBestSolution().getEvaluationNote()) {
+			this.bestSolution = anotherIndividual;
 		}
 	}
 	
+	/**
+	 * Method responsible for adding up the grades of the evaluations of a given population
+	 * 
+	 * @return a double containing the sum of the evaluations
+	 */
+	public Double evaluationSum() {
+		
+		Double sum = 0.0;
+		
+		for(Individual ind : this.population) {
+			sum += ind.getEvaluationNote();
+		}
+		
+		return sum;
+	}
+	
+	public int selectParent(Double evaluationSum) {
+		
+		int parent = -1;
+		Double sortValue = Math.random() * evaluationSum;
+		Double sum = 0.0;
+		int i = 0;
+		while(i < this.population.size() && sum < sortValue) {
+			sum += this.population.get(i).getEvaluationNote();
+			parent += 1;
+			i += 1;
+		}
+		return parent;
+	}
+	
+	/**
+	 * Method responsible for ordenate a given population
+	 */
 	public void ordenatePopulation() {
 		Collections.sort(this.population);
 	}
