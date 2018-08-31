@@ -3,6 +3,8 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Formatter;
+
 /**
 * 
 *
@@ -65,8 +67,8 @@ public class Individual implements Comparable<Individual>{
 			grade = 1.0;
 		}
 		
-		this.evaluationNote = grade;
-		this.usedSpace = sumOfSpaces;
+		this.evaluationNote = Formatter.round(grade, 2);;
+		this.usedSpace = Formatter.round(sumOfSpaces, 3);
 	}
 	
 	/**
