@@ -45,29 +45,14 @@ public class Execute {
         	names.add(product.getName());
         }
         
-        Double limit = 3.0;
-        
+        Double spaceLimit = 3.0;
         int populationSize = 20;
+        Double mutationRate = 0.01;
+        int numberOfGenerations = 100;
         
         GeneticAlgorithm ga = new GeneticAlgorithm(populationSize);
         
-        ga.initializesPopulation(spaces, values, limit);
-        
-        for(Individual ind : ga.getPopulation()) {
-        	ind.evaluation();
-        }
-        
-        ga.ordenatePopulation();
-        
-        ga.bestIndividual(ga.getPopulation().get(0));
-        
-        Double sum = ga.evaluationSum();
-        
-        for(int i = 0; i < ga.getPopulation().size() / 2; i++) {
-        	int parent01 = ga.selectParent(sum);
-        	int parent02 = ga.selectParent(sum);
-        	
-        }
+        List result = ga.resolve(mutationRate, numberOfGenerations, spaces, values, spaceLimit);
         
 	}
 

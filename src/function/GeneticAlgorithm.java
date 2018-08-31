@@ -63,15 +63,82 @@ public class GeneticAlgorithm {
 	public int selectParent(Double evaluationSum) {
 		
 		int parent = -1;
+		
 		Double sortValue = Math.random() * evaluationSum;
 		Double sum = 0.0;
+		
 		int i = 0;
+		
 		while(i < this.population.size() && sum < sortValue) {
 			sum += this.population.get(i).getEvaluationNote();
 			parent += 1;
 			i += 1;
 		}
+		
 		return parent;
+	}
+	
+	public void viewGeneration() {
+		
+		Individual best = this.population.get(0);
+		
+		System.out.println("Generation: " + best.getGeneration() + 
+							" Value: " + best.getEvaluationNote() + 
+							" Space: " + best.getUsedSpace() + 
+							" Chromossome: " + best.getChromosome());
+		
+	}
+	
+	public List resolve(Double mutationRate, int numberOfGenerations, List spaces, List values, Double spaceLimit) {
+		
+		this.initializesPopulation(spaces, values, spaceLimit);
+		
+		for(Individual individual : this.population) {
+			individual.evaluation();
+		}
+		
+		this.ordenatePopulation();
+		this.viewGeneration();
+		
+		for(int generation = 0; generation < numberOfGenerations; generation++) {
+			
+			Double evaluationSum = this.evaluationSum();
+			
+			List<Individual> newPopulation = new ArrayList<>();
+			
+			for(int i = 0; i < this.population.size() / 2; i++) {
+				
+				int parent1 = this.selectParent(evaluationSum);
+				int parent2 = this.selectParent(evaluationSum);
+				
+				List<Individual> children = this.getPopulation().get(parent1).crossover(this.getPopulation().get(parent2));
+				
+				newPopulation.add(children.get(0).mutation(mutationRate));
+				newPopulation.add(children.get(1).mutation(mutationRate));
+				
+			}
+			
+			this.setPopulation(newPopulation);
+			
+			for(Individual individual : this.getPopulation()) {
+				individual.evaluation();
+			}
+			
+			Individual bestIndividual = this.population.get(0);
+
+			this.ordenatePopulation();
+			this.viewGeneration();
+			this.bestIndividual(bestIndividual);
+			
+		}
+		
+		System.out.println("Melhor solução G -> " + this.bestSolution.getGeneration() + 
+						   " Value: " + this.bestSolution.getEvaluationNote() + 
+						   " Space: " + this.bestSolution.getUsedSpace() + 
+						   " Chromossome: " + this.bestSolution.getChromosome());
+		
+		return this.bestSolution.getChromosome();
+		
 	}
 	
 	/**

@@ -28,6 +28,7 @@ public class Individual implements Comparable<Individual>{
 	 * @param spaceLimit limit of space used by the cargo
 	 */
 	public Individual(List spaces, List values, Double spaceLimit) {
+		
 		this.spaces = spaces;
 		this.values = values;
 		this.spaceLimit = spaceLimit;
@@ -49,6 +50,7 @@ public class Individual implements Comparable<Individual>{
 	 * attached to the chromosome, returning its value in R$
 	 */
 	public void evaluation() {
+		
 		Double grade = 0.0;
 		Double sumOfSpaces = 0.0;
 		
@@ -102,9 +104,13 @@ public class Individual implements Comparable<Individual>{
 		
 	}
 	
+	/**
+	 * Method responsible for creating the mutation in a given individual
+	 * 
+	 * @param mutationRate percentage representing the probability of mutation
+	 * @return the individual resulting from the mutation
+	 */
 	public Individual mutation(Double mutationRate) {
-		
-		System.out.println("Before mutation: " + this.chromosome);
 		
 		for(int i = 0; i < this.chromosome.size(); i++) {
 			if(Math.random() < mutationRate) {
@@ -116,10 +122,7 @@ public class Individual implements Comparable<Individual>{
 			}
 		}
 		
-		System.out.println("After mutation:  " + this.chromosome);
-		
 		return this;
-		
 	}
 	
 	public Double getUsedSpace() {
