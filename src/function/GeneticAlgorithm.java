@@ -12,6 +12,7 @@ public class GeneticAlgorithm {
 	private List<Individual> population = new ArrayList<>();
 	private int generation;
 	private Individual bestSolution;
+	private List<Individual> bestChromossomes = new ArrayList();
 	
 	public GeneticAlgorithm(int populationSize) {
 		this.populationSize = populationSize;
@@ -81,6 +82,8 @@ public class GeneticAlgorithm {
 	public void viewGeneration() {
 		
 		Individual best = this.population.get(0);
+		
+		this.bestChromossomes.add(best);
 		
 		System.out.println("Generation: " + best.getGeneration() + 
 							" Value: " + best.getEvaluationNote() + 
@@ -178,6 +181,14 @@ public class GeneticAlgorithm {
 
 	public void setBestSolution(Individual bestSolution) {
 		this.bestSolution = bestSolution;
+	}
+
+	public List<Individual> getBestChromossomes() {
+		return bestChromossomes;
+	}
+
+	public void setBestChromossomes(List<Individual> bestChromossomes) {
+		this.bestChromossomes = bestChromossomes;
 	}
 	
 }
