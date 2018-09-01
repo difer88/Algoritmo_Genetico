@@ -6,6 +6,10 @@
   <artifactId>genetic-algorithm</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+  </properties>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -20,4 +24,5 @@
       
     </plugins>
   </build>
+  
 </project>
