@@ -135,7 +135,7 @@ public class GeneticAlgorithm {
 			
 		}
 		
-		System.out.println("Melhor solução G -> " + this.bestSolution.getGeneration() + 
+		System.out.println("Best solution G -> " + this.bestSolution.getGeneration() + 
 						   " Value: " + this.bestSolution.getEvaluationNote() + 
 						   " Space: " + this.bestSolution.getUsedSpace() + 
 						   " Chromossome: " + this.bestSolution.getChromosome());

@@ -3,9 +3,11 @@ package executor;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Individual;
+import org.jfree.ui.RefineryUtilities;
+
 import bean.Product;
 import function.GeneticAlgorithm;
+import tool.Graphic;
 
 /**
 * 
@@ -53,6 +55,20 @@ public class Execute {
         GeneticAlgorithm ga = new GeneticAlgorithm(populationSize);
         
         List result = ga.resolve(mutationRate, numberOfGenerations, spaces, values, spaceLimit);
+        
+        for(int i = 0; i < productList.size(); i++) {
+        	if(result.get(i).equals("1")) {
+        		System.out.println("Name: " + productList.get(i).getName());
+        	}
+        }
+        
+        Graphic graphic = new Graphic("Genetic Algorithm", "Solution Evolution", ga.getBestChromossomes());
+        
+        graphic.pack();
+        
+        RefineryUtilities.centerFrameOnScreen(graphic);
+        
+        graphic.setVisible(true);
         
 	}
 
