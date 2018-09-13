@@ -12,15 +12,17 @@ public class Product {
 	private String name;
 	private Double space;
 	private Double value;
+	private int quantity;
 	
 	public Product() {
 		
 	}
 
-	public Product(String name, Double space, Double value) {
+	public Product(String name, Double space, Double value, int quantity) {
 		this.name = name;
 		this.space = space;
 		this.value = value;
+		this.quantity = quantity;
 	}
 
 	public String getName() {
@@ -46,5 +48,12 @@ public class Product {
 	public void setValue(Double value) {
 		this.value = value;
 	}
-	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 }

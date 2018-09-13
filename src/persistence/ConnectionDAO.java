@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Logger;
 
 import enumeration.DatabaseSettings;
 
@@ -15,17 +16,27 @@ public class ConnectionDAO {
 	protected CallableStatement call;
 	protected ResultSet rs;
 	
-	protected void openConnection() throws Exception{
+	private final static Logger LOGGER = Logger.getLogger(ConnectionDAO.class.getName());
+	
+	protected void openConnection() {
 		if(con != null) {
-			Class.forName(DatabaseSettings.DRIVER.getValue());
-			con = DriverManager.getConnection(DatabaseSettings.URL.getValue(), 
-					DatabaseSettings.USER.getValue(), DatabaseSettings.PASSWORD.getValue());
+			try {
+				Class.forName(DatabaseSettings.DRIVER.getValue());
+				con = DriverManager.getConnection(DatabaseSettings.URL.getValue(), 
+						DatabaseSettings.USER.getValue(), DatabaseSettings.PASSWORD.getValue());
+			} catch (Exception e) {
+				LOGGER.info("Erro: " + e.getMessage());
+			}
 		}
 	}
 	
-	protected void closeConnection() throws Exception{
-		if(con != null){
-			con.close();
+	protected void closeConnection() {
+		try {
+			if(con != null){
+				con.close();
+			}
+		} catch (Exception e) {
+			LOGGER.info("Erro: " + e.getMessage());
 		}
 	}
 }
