@@ -31,3 +31,5 @@ insert into products (product_name, used_space, product_value, quantity) values(
 insert into products (product_name, used_space, product_value, quantity) values('TV 42', 0.200, 2999.00, 28);
 insert into products (product_name, used_space, product_value, quantity) values('Iphone 6', 0.000089, 2911.12, 17);
 insert into products (product_name, used_space, product_value, quantity) values('Ventilador Ventisol', 0.496, 199.90, 21);
+
+SELECT * FROM 	products ORDER BY 	product_id ASC

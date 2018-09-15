@@ -3,9 +3,9 @@ package enumeration;
 public enum DatabaseSettings {
 	
 	DRIVER("com.mysql.jdbc.Driver"),
-	URL("jdbc:mysql://localhost:3306/aula06"),
+	URL("jdbc:mysql://localhost:3306/transportanalysis"),
 	USER("root"),
-	PASSWORD("brqbrq");
+	PASSWORD("Die#2004");
 
 	private String value;
 	

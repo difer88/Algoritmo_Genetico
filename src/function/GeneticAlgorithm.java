@@ -9,7 +9,7 @@ import bean.Individual;
 public class GeneticAlgorithm {
 	
 	private int populationSize;
-	private List<Individual> population = new ArrayList<>();
+	private List<Individual> population = new ArrayList();
 	private int generation;
 	private Individual bestSolution;
 	private List<Individual> bestChromossomes = new ArrayList();
@@ -107,7 +107,7 @@ public class GeneticAlgorithm {
 			
 			Double evaluationSum = this.evaluationSum();
 			
-			List<Individual> newPopulation = new ArrayList<>();
+			List<Individual> newPopulation = new ArrayList();
 			
 			for(int i = 0; i < this.population.size() / 2; i++) {
 				

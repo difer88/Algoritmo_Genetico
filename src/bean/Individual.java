@@ -14,13 +14,13 @@ import util.Formatter;
 */
 public class Individual implements Comparable<Individual>{
 	
-	private List spaces = new ArrayList<>();
-	private List values = new ArrayList<>();
+	private List spaces = new ArrayList();
+	private List values = new ArrayList();
 	private Double spaceLimit;
 	private Double usedSpace;
 	private Double evaluationNote;
 	private int generation;
-	private List chromosome = new ArrayList<>();
+	private List chromosome = new ArrayList();
 	
 	/**
 	 * Constructor of the Individual class and initialization of its chromosome
@@ -81,12 +81,12 @@ public class Individual implements Comparable<Individual>{
 		
 		int cut = (int) Math.round(Math.random() * this.chromosome.size());
 		
-		List child_01 = new ArrayList<>();
+		List child_01 = new ArrayList();
 		
 		child_01.addAll(anotherIndividual.getChromosome().subList(0, cut));
 		child_01.addAll(this.chromosome.subList(cut, this.chromosome.size()));
 		
-		List child_02 = new ArrayList<>();
+		List child_02 = new ArrayList();
 		
 		child_02.addAll(this.chromosome.subList(0, cut));
 		child_02.addAll(anotherIndividual.getChromosome().subList(cut, this.chromosome.size()));
@@ -183,7 +183,6 @@ public class Individual implements Comparable<Individual>{
 		this.chromosome = chromosome;
 	}
 
-	@Override
 	public int compareTo(Individual ind) {
 		if(this.evaluationNote > ind.getEvaluationNote()) {
 			return -1;

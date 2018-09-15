@@ -49,7 +49,7 @@ public class ProductDAO extends ConnectionDAO {
 	
 	public List<Product> selectAllProducts() {
 		
-		List<Product> productList = new ArrayList<>();
+		List<Product> productList = new ArrayList();
 		
 		try {
 			
@@ -57,9 +57,9 @@ public class ProductDAO extends ConnectionDAO {
 			
 			sql.append("SELECT * ")
 			   .append("FROM ")
-			   .append("	products")
+			   .append("	products ")
 			   .append("ORDER BY ")
-			   .append("	product_id")
+			   .append("	product_id ")
 			   .append("ASC ");
 			
 			openConnection();

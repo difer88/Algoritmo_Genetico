@@ -19,7 +19,7 @@ public class ConnectionDAO {
 	private final static Logger LOGGER = Logger.getLogger(ConnectionDAO.class.getName());
 	
 	protected void openConnection() {
-		if(con != null) {
+		if(con == null) {
 			try {
 				Class.forName(DatabaseSettings.DRIVER.getValue());
 				con = DriverManager.getConnection(DatabaseSettings.URL.getValue(), 

@@ -14,7 +14,7 @@ import bean.Individual;
 
 public class Graphic extends ApplicationFrame {
 
-	private List<Individual> bestChromossomes = new ArrayList<>();
+	private List<Individual> bestChromossomes = new ArrayList();
 	
 	public Graphic(String windowTitle, String graphicTitle, List bestChromossomes) {
 		super(windowTitle);

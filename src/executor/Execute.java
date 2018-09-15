@@ -21,15 +21,15 @@ public class Execute {
 
 	public static void main(String[] args) {
 
-		List<Product> productList = new ArrayList<>();
+		List<Product> productList = new ArrayList();
 		
 		ProductDAO pd = new ProductDAO();
 		
 		productList = pd.selectAllProducts();
 		
-        List spaces = new ArrayList<>();
-        List values = new ArrayList<>();
-        List names = new ArrayList<>();
+        List spaces = new ArrayList();
+        List values = new ArrayList();
+        List names = new ArrayList();
         
         for(Product product : productList) {
         	spaces.add(product.getSpace());
