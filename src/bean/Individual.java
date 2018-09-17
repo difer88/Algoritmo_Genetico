@@ -6,21 +6,21 @@ import java.util.List;
 import util.Formatter;
 
 /**
-* 
+* Provides the information needed to solve this transportation case
 *
 * @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
 * @version 1.0
-* @since   2018-08-09 
+* @since   2018-08-09
 */
 public class Individual implements Comparable<Individual>{
 	
-	private List spaces = new ArrayList();
-	private List values = new ArrayList();
+	private List spaces;
+	private List values;
 	private Double spaceLimit;
 	private Double usedSpace;
 	private Double evaluationNote;
 	private int generation;
-	private List chromosome = new ArrayList();
+	private List chromosome;
 	
 	/**
 	 * Constructor of the Individual class and initialization of its chromosome
@@ -31,8 +31,9 @@ public class Individual implements Comparable<Individual>{
 	 */
 	public Individual(List spaces, List values, Double spaceLimit) {
 		
-		this.spaces = spaces;
-		this.values = values;
+		this.spaces = new ArrayList(spaces);
+		this.values = new ArrayList(values);
+		this.chromosome = new ArrayList();
 		this.spaceLimit = spaceLimit;
 		this.evaluationNote = 0.0;
 		this.usedSpace = 0.0;

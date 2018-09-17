@@ -6,16 +6,25 @@ import java.util.List;
 
 import bean.Individual;
 
+/**
+* Provides the information needed to solve this transportation case
+*
+* @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
+* @version 1.0
+* @since   2018-08-09
+*/
 public class GeneticAlgorithm {
 	
 	private int populationSize;
-	private List<Individual> population = new ArrayList();
+	private List<Individual> population;
 	private int generation;
 	private Individual bestSolution;
-	private List<Individual> bestChromossomes = new ArrayList();
+	private List<Individual> bestChromossomes;
 	
 	public GeneticAlgorithm(int populationSize) {
 		this.populationSize = populationSize;
+		this.population = new ArrayList();
+		this.bestChromossomes = new ArrayList();
 	}
 	
 	/**
