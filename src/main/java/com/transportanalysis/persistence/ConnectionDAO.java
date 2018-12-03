@@ -1,4 +1,4 @@
-package persistence;
+package main.java.com.transportanalysis.persistence;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Logger;
 
-import enumeration.DatabaseSettings;
+import main.java.com.transportanalysis.enumeration.DatabaseSettings;
 
 public class ConnectionDAO {
 	

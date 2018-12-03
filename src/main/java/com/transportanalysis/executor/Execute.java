@@ -1,14 +1,14 @@
-package executor;
+package main.java.com.transportanalysis.executor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jfree.ui.RefineryUtilities;
 
-import bean.Product;
-import function.GeneticAlgorithm;
-import persistence.ProductDAO;
-import tool.Graphic;
+import main.java.com.transportanalysis.bean.Product;
+import main.java.com.transportanalysis.function.GeneticAlgorithm;
+import main.java.com.transportanalysis.persistence.ProductDAO;
+import main.java.com.transportanalysis.tool.Graphic;
 
 /**
 * 

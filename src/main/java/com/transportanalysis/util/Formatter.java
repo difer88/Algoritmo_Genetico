@@ -1,4 +1,4 @@
-package util;
+package main.java.com.transportanalysis.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,10 +1,10 @@
-package persistence;
+package main.java.com.transportanalysis.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import bean.Product;
+import main.java.com.transportanalysis.bean.Product;
 
 public class ProductDAO extends ConnectionDAO {
 	

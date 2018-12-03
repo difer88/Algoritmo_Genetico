@@ -1,10 +1,10 @@
-package function;
+package main.java.com.transportanalysis.function;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import bean.Individual;
+import main.java.com.transportanalysis.bean.Individual;
 
 /**
 * Provides the information needed to solve this transportation case

@@ -1,4 +1,4 @@
-package tool;
+package main.java.com.transportanalysis.tool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-import bean.Individual;
+import main.java.com.transportanalysis.bean.Individual;
 
 public class Graphic extends ApplicationFrame {
 

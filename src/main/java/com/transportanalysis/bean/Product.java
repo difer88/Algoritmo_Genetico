@@ -1,4 +1,4 @@
-package bean;
+package main.java.com.transportanalysis.bean;
 
 /**
 * Provides the main attributes of the products

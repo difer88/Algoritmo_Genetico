@@ -1,4 +1,4 @@
-package enumeration;
+package main.java.com.transportanalysis.enumeration;
 
 public enum DatabaseSettings {
 	

@@ -1,9 +1,9 @@
-package bean;
+package main.java.com.transportanalysis.bean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import util.Formatter;
+import main.java.com.transportanalysis.util.Formatter;
 
 /**
 * Provides the information needed to solve this transportation case
