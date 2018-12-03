@@ -1,13 +1,13 @@
-package main.java.com.transportanalysis.test.models;
+package main.java.com.transportanalysis.models;
 
 import java.util.List;
 
-public class Cargo {
+public class CargoVO {
 
     protected long cargoId;
-    protected List<Product> productsList;
+    protected List<ProductVO> productsList;
 
-    public Cargo(long cargoId, List<Product> productsList) {
+    public CargoVO(long cargoId, List<ProductVO> productsList) {
         this.cargoId = cargoId;
         this.productsList = productsList;
     }
@@ -20,11 +20,11 @@ public class Cargo {
         this.cargoId = cargoId;
     }
 
-    public List<Product> getProductsList() {
+    public List<ProductVO> getProductsList() {
         return productsList;
     }
 
-    public void setProductsList(List<Product> productsList) {
+    public void setProductsList(List<ProductVO> productsList) {
         this.productsList = productsList;
     }
 }

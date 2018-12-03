@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import main.java.com.transportanalysis.bean.Individual;
+import main.java.com.transportanalysis.models.IndividualVO;
 
 /**
 * Provides the information needed to solve this transportation case
@@ -16,10 +16,10 @@ import main.java.com.transportanalysis.bean.Individual;
 public class GeneticAlgorithm {
 	
 	private int populationSize;
-	private List<Individual> population;
+	private List<IndividualVO> population;
 	private int generation;
-	private Individual bestSolution;
-	private List<Individual> bestChromossomes;
+	private IndividualVO bestSolution;
+	private List<IndividualVO> bestChromossomes;
 	
 	public GeneticAlgorithm(int populationSize) {
 		this.populationSize = populationSize;
@@ -37,7 +37,7 @@ public class GeneticAlgorithm {
 	public void initializesPopulation(List spaces, List values, Double spaceLimit) {
 		
 		for(int i = 0; i < this.populationSize; i++) {
-			this.population.add(new Individual(spaces, values, spaceLimit));
+			this.population.add(new IndividualVO(spaces, values, spaceLimit));
 		}
 		
 		this.bestSolution = this.population.get(0);
@@ -46,11 +46,11 @@ public class GeneticAlgorithm {
 	/**
 	 * Method responsible for analyzing the best solution between two individuals
 	 * 
-	 * @param anotherIndividual second individual used to perform the analysis
+	 * @param anotherIndividualVO second individual used to perform the analysis
 	 */
-	public void bestIndividual(Individual anotherIndividual) {
-		if(anotherIndividual.getEvaluationNote() > this.getBestSolution().getEvaluationNote()) {
-			this.bestSolution = anotherIndividual;
+	public void bestIndividual(IndividualVO anotherIndividualVO) {
+		if(anotherIndividualVO.getEvaluationNote() > this.getBestSolution().getEvaluationNote()) {
+			this.bestSolution = anotherIndividualVO;
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class GeneticAlgorithm {
 		
 		Double sum = 0.0;
 		
-		for(Individual ind : this.population) {
+		for(IndividualVO ind : this.population) {
 			sum += ind.getEvaluationNote();
 		}
 		
@@ -90,7 +90,7 @@ public class GeneticAlgorithm {
 	
 	public void viewGeneration() {
 		
-		Individual best = this.population.get(0);
+		IndividualVO best = this.population.get(0);
 		
 		this.bestChromossomes.add(best);
 		
@@ -105,8 +105,8 @@ public class GeneticAlgorithm {
 		
 		this.initializesPopulation(spaces, values, spaceLimit);
 		
-		for(Individual individual : this.population) {
-			individual.evaluation();
+		for(IndividualVO individualVO : this.population) {
+			individualVO.evaluation();
 		}
 		
 		this.ordenatePopulation();
@@ -116,14 +116,14 @@ public class GeneticAlgorithm {
 			
 			Double evaluationSum = this.evaluationSum();
 			
-			List<Individual> newPopulation = new ArrayList();
+			List<IndividualVO> newPopulation = new ArrayList();
 			
 			for(int i = 0; i < this.population.size() / 2; i++) {
 				
 				int parent1 = this.selectParent(evaluationSum);
 				int parent2 = this.selectParent(evaluationSum);
 				
-				List<Individual> children = this.getPopulation().get(parent1).crossover(this.getPopulation().get(parent2));
+				List<IndividualVO> children = this.getPopulation().get(parent1).crossover(this.getPopulation().get(parent2));
 				
 				newPopulation.add(children.get(0).mutation(mutationRate));
 				newPopulation.add(children.get(1).mutation(mutationRate));
@@ -132,15 +132,15 @@ public class GeneticAlgorithm {
 			
 			this.setPopulation(newPopulation);
 			
-			for(Individual individual : this.getPopulation()) {
-				individual.evaluation();
+			for(IndividualVO individualVO : this.getPopulation()) {
+				individualVO.evaluation();
 			}
 			
-			Individual bestIndividual = this.population.get(0);
+			IndividualVO bestIndividualVO = this.population.get(0);
 
 			this.ordenatePopulation();
 			this.viewGeneration();
-			this.bestIndividual(bestIndividual);
+			this.bestIndividual(bestIndividualVO);
 			
 		}
 		
@@ -168,11 +168,11 @@ public class GeneticAlgorithm {
 		this.populationSize = populationSize;
 	}
 
-	public List<Individual> getPopulation() {
+	public List<IndividualVO> getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(List<Individual> population) {
+	public void setPopulation(List<IndividualVO> population) {
 		this.population = population;
 	}
 
@@ -184,19 +184,19 @@ public class GeneticAlgorithm {
 		this.generation = generation;
 	}
 
-	public Individual getBestSolution() {
+	public IndividualVO getBestSolution() {
 		return bestSolution;
 	}
 
-	public void setBestSolution(Individual bestSolution) {
+	public void setBestSolution(IndividualVO bestSolution) {
 		this.bestSolution = bestSolution;
 	}
 
-	public List<Individual> getBestChromossomes() {
+	public List<IndividualVO> getBestChromossomes() {
 		return bestChromossomes;
 	}
 
-	public void setBestChromossomes(List<Individual> bestChromossomes) {
+	public void setBestChromossomes(List<IndividualVO> bestChromossomes) {
 		this.bestChromossomes = bestChromossomes;
 	}
 	

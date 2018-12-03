@@ -10,11 +10,11 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-import main.java.com.transportanalysis.bean.Individual;
+import main.java.com.transportanalysis.models.IndividualVO;
 
 public class Graphic extends ApplicationFrame {
 
-	private List<Individual> bestChromossomes = new ArrayList();
+	private List<IndividualVO> bestChromossomes = new ArrayList();
 	
 	public Graphic(String windowTitle, String graphicTitle, List bestChromossomes) {
 		super(windowTitle);

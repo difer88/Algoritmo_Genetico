@@ -1,13 +1,13 @@
-package main.java.com.transportanalysis.test.controller;
+package main.java.com.transportanalysis.controller;
 
-import main.java.com.transportanalysis.test.services.cargo.CargoService;
+import main.java.com.transportanalysis.models.ProductVO;
+import main.java.com.transportanalysis.services.cargo.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.core.Response;
 
 @RestController
 @RequestMapping(path = "/transportanalysis")
@@ -23,18 +23,19 @@ public class CargoController {
 
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("cargo/{id}")
-    public void getCargoById(@PathParam("id") long id) throws Exception {
+    @RequestMapping(path = "/postProduct", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response postProduct(@RequestBody ProductVO productVO) throws Exception {
 
         try {
 
-            System.out.println("ID: " + id);
+            System.out.println("product_name: " + productVO.getName());
+            System.out.println("space_used: " + productVO.getSpace());
+            System.out.println("product_value: " + productVO.getValue());
+            System.out.println("stock_quantity: " + productVO.getQuantity());
 
-//            return Response.status(201).
-//                    header("Location", uri.getBaseUri() + "transportanalysis/products/")
-//                    .build();
+            return Response.status(200).entity(productVO).build();
+
         } catch (Exception e) {
             throw new NotFoundException(e.getMessage());
         }
@@ -46,7 +47,7 @@ public class CargoController {
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public Response createNewProduct(ProductRequest productRequest) {
 //
-//        Product product;
+//        ProductVO product;
 //
 //        if (null != productRequest.parentId) {
 //            try {

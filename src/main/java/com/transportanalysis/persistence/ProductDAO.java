@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import main.java.com.transportanalysis.bean.Product;
+import main.java.com.transportanalysis.models.ProductVO;
 
 public class ProductDAO extends ConnectionDAO {
 	
 	private final static Logger LOGGER = Logger.getLogger(ProductDAO.class.getName());
 
-	public void insertProduct(Product product) {
+	public void insertProduct(ProductVO productVO) {
 		
 		try {
 			
@@ -31,10 +31,10 @@ public class ProductDAO extends ConnectionDAO {
 			
 			stmt = con.prepareStatement(sql.toString());
 			
-			stmt.setString(aux++, product.getName());
-			stmt.setDouble(aux++, product.getSpace());
-			stmt.setDouble(aux++, product.getValue());
-			stmt.setInt(aux++, product.getQuantity());
+			stmt.setString(aux++, productVO.getName());
+			stmt.setDouble(aux++, productVO.getSpace());
+			stmt.setDouble(aux++, productVO.getValue());
+			stmt.setInt(aux++, productVO.getQuantity());
 			
 			stmt.execute();
 			
@@ -47,9 +47,9 @@ public class ProductDAO extends ConnectionDAO {
 		}
 	}
 	
-	public List<Product> selectAllProducts() {
+	public List<ProductVO> selectAllProducts() {
 		
-		List<Product> productList = new ArrayList();
+		List<ProductVO> productVOList = new ArrayList();
 		
 		try {
 			
@@ -68,26 +68,26 @@ public class ProductDAO extends ConnectionDAO {
 			
 			rs = stmt.executeQuery();
 			
-			Product product;
+			ProductVO productVO;
 			
 			while(rs.next()) {
 				
-				product = new Product();
+				productVO = new ProductVO();
 				
-				product.setName(rs.getString("product_name"));
-				product.setSpace(rs.getDouble("used_space"));
-				product.setValue(rs.getDouble("product_value"));
-				product.setQuantity(rs.getInt("quantity"));
+				productVO.setName(rs.getString("product_name"));
+				productVO.setSpace(rs.getDouble("used_space"));
+				productVO.setValue(rs.getDouble("product_value"));
+				productVO.setQuantity(rs.getInt("quantity"));
 				
-				productList.add(product);
+				productVOList.add(productVO);
 				
 			}
 			
-			return productList;
+			return productVOList;
 			
 		} catch (Exception e) {
 			LOGGER.info("Erro: " + e.getMessage());
-			return productList;
+			return productVOList;
 		}
 	}
 }

@@ -1,6 +1,6 @@
-package main.java.com.transportanalysis.test.services.cargo;
+package main.java.com.transportanalysis.services.cargo;
 
-import main.java.com.transportanalysis.test.models.Product;
+import main.java.com.transportanalysis.models.ProductVO;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -71,12 +71,12 @@ public class CargoServiceImpl implements CargoService {
 //    }
 
     @Override
-    public Product getProductById(long productId) throws Exception {
+    public ProductVO getProductById(long productId) throws Exception {
         return null;
     }
 
     @Override
-    public Product createNewProduct(double amount, String type) {
+    public ProductVO createNewProduct(double amount, String type) {
         return null;
     }
 }

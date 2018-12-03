@@ -1,18 +1,17 @@
-package main.java.com.transportanalysis.bean;
+package main.java.com.transportanalysis.models;
+
+import main.java.com.transportanalysis.util.Formatter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import main.java.com.transportanalysis.util.Formatter;
 
 /**
 * Provides the information needed to solve this transportation case
 *
 * @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
-* @version 1.0
 * @since   2018-08-09
 */
-public class Individual implements Comparable<Individual>{
+public class IndividualVO implements Comparable<IndividualVO>{
 	
 	private List spaces;
 	private List values;
@@ -23,13 +22,13 @@ public class Individual implements Comparable<Individual>{
 	private List chromosome;
 	
 	/**
-	 * Constructor of the Individual class and initialization of its chromosome
+	 * Constructor of the IndividualVO class and initialization of its chromosome
 	 * 
 	 * @param spaces list containing the spaces used by the items
 	 * @param values list containing the values of the items
 	 * @param spaceLimit limit of space used by the cargo
 	 */
-	public Individual(List spaces, List values, Double spaceLimit) {
+	public IndividualVO(List spaces, List values, Double spaceLimit) {
 		
 		this.spaces = new ArrayList(spaces);
 		this.values = new ArrayList(values);
@@ -75,27 +74,27 @@ public class Individual implements Comparable<Individual>{
 	/**
 	 * Method responsible for creating the crossover between two chromosomes
 	 * 
-	 * @param anotherIndividual second individual used to perform the crossover
+	 * @param anotherIndividualVO second individual used to perform the crossover
 	 * @return a list of children generated through the crossover method
 	 */
-	public List crossover(Individual anotherIndividual) {
+	public List crossover(IndividualVO anotherIndividualVO) {
 		
 		int cut = (int) Math.round(Math.random() * this.chromosome.size());
 		
 		List child_01 = new ArrayList();
 		
-		child_01.addAll(anotherIndividual.getChromosome().subList(0, cut));
+		child_01.addAll(anotherIndividualVO.getChromosome().subList(0, cut));
 		child_01.addAll(this.chromosome.subList(cut, this.chromosome.size()));
 		
 		List child_02 = new ArrayList();
 		
 		child_02.addAll(this.chromosome.subList(0, cut));
-		child_02.addAll(anotherIndividual.getChromosome().subList(cut, this.chromosome.size()));
+		child_02.addAll(anotherIndividualVO.getChromosome().subList(cut, this.chromosome.size()));
 		
-		List<Individual> children = new ArrayList();
+		List<IndividualVO> children = new ArrayList();
 		
-		children.add(new Individual(this.spaces, this.values, this.spaceLimit));
-		children.add(new Individual(this.spaces, this.values, this.spaceLimit));
+		children.add(new IndividualVO(this.spaces, this.values, this.spaceLimit));
+		children.add(new IndividualVO(this.spaces, this.values, this.spaceLimit));
 		
 		children.get(0).setChromosome(child_01);
 		children.get(0).setGeneration(this.generation + 1);
@@ -113,7 +112,7 @@ public class Individual implements Comparable<Individual>{
 	 * @param mutationRate percentage representing the probability of mutation
 	 * @return the individual resulting from the mutation
 	 */
-	public Individual mutation(Double mutationRate) {
+	public IndividualVO mutation(Double mutationRate) {
 		
 		for(int i = 0; i < this.chromosome.size(); i++) {
 			if(Math.random() < mutationRate) {
@@ -184,7 +183,7 @@ public class Individual implements Comparable<Individual>{
 		this.chromosome = chromosome;
 	}
 
-	public int compareTo(Individual ind) {
+	public int compareTo(IndividualVO ind) {
 		if(this.evaluationNote > ind.getEvaluationNote()) {
 			return -1;
 		} else if(this.evaluationNote < ind.getEvaluationNote()) {

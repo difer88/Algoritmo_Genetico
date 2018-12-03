@@ -1,24 +1,30 @@
-package main.java.com.transportanalysis.bean;
+package main.java.com.transportanalysis.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
 * Provides the main attributes of the products
 *
 * @author  Diego Hortolani Fernandes <diegofernandes88@hotmail.com>
-* @version 1.0
+* @version 1.1
 * @since   2018-08-09
 */
-public class Product {
+public class ProductVO {
 
+	@JsonProperty("product_name")
 	private String name;
+	@JsonProperty("space_used")
 	private Double space;
+	@JsonProperty("product_value")
 	private Double value;
+	@JsonProperty("stock_quantity")
 	private int quantity;
 	
-	public Product() {
+	public ProductVO() {
 		
 	}
 
-	public Product(String name, Double space, Double value, int quantity) {
+	public ProductVO(String name, Double space, Double value, int quantity) {
 		this.name = name;
 		this.space = space;
 		this.value = value;
