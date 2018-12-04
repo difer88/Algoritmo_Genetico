@@ -1,3 +1,5 @@
+--  CREATE DATABASE  --
+
 create database transportanalysis;
 
 use transportanalysis;
@@ -11,11 +13,7 @@ create table products (
     constraint pk_product_productid primary key (product_id)
 );
 
-drop table products;
-
-select * from products;
-
-delete from products where product_id > 0;
+--  INSERTS  --
 
 insert into products (product_name, used_space, product_value, quantity) values('Geladeira Electrolux', 0.751, 999.90, 2);
 insert into products (product_name, used_space, product_value, quantity) values('Geladeira Brastemp', 0.635, 849.00, 4);
@@ -32,4 +30,12 @@ insert into products (product_name, used_space, product_value, quantity) values(
 insert into products (product_name, used_space, product_value, quantity) values('Iphone 6', 0.000089, 2911.12, 17);
 insert into products (product_name, used_space, product_value, quantity) values('Ventilador Ventisol', 0.496, 199.90, 21);
 
-SELECT * FROM 	products ORDER BY 	product_id ASC
+--  QUERIES  --
+
+drop table products;
+
+select * from products;
+select * from products order by product_id asc;
+
+delete from products where product_id > 0;
+

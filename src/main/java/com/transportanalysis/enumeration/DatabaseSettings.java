@@ -4,7 +4,7 @@ public enum DatabaseSettings {
 	
 	DRIVER("com.mysql.jdbc.Driver"),
 	URL("jdbc:mysql://localhost:3306/transportanalysis"),
-	USER("root"),
+	USER("diego"),
 	PASSWORD("Die#2004");
 
 	private String value;
