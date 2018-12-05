@@ -1,15 +1,19 @@
 package main.java.com.transportanalysis.controller;
 
+import main.java.com.transportanalysis.enumeration.ApiMessages;
 import main.java.com.transportanalysis.models.ProductVO;
+import main.java.com.transportanalysis.response.ResponseMessage;
 import main.java.com.transportanalysis.services.cargo.CargoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.Produces;
 
 @RestController
 @RequestMapping(path = "/transportanalysis")
@@ -20,30 +24,21 @@ public class ProductController {
     @Autowired
     protected CargoService cargoService;
 
-    @GetMapping(path = "/test")
-    void test() {
-
-        System.out.println("Test");
-
-    }
-
     @RequestMapping(path = "/postProduct", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public Response postProduct(@RequestBody ProductVO productVO) throws Exception {
+    @Produces("application/json")
+    public ResponseMessage postProduct(@RequestBody ProductVO productVO) throws BeanCreationException {
 
         try {
-
-            logger.
 
             logger.info("product_name: " + productVO.getName());
             logger.info("space_used: " + productVO.getSpace());
             logger.info("product_value: " + productVO.getValue());
             logger.info("stock_quantity: " + productVO.getQuantity());
 
-            return Response.status(200).entity(productVO).build();
+            return ResponseMessage.createMessage(ApiMessages.SUCCESS, ApiMessages.CREATE_PRODUCT_SUCCESS);
 
         } catch (Exception e) {
-            throw new NotFoundException(e.getMessage());
+            throw new BeanCreationException(ApiMessages.CREATE_PRODUCT_ERROR);
         }
     }
 
