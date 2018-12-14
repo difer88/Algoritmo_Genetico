@@ -1,6 +1,6 @@
 package main.java.com.transportanalysis.controller;
 
-import main.java.com.transportanalysis.enumeration.ApiMessages;
+import main.java.com.transportanalysis.constants.ApiMessages;
 import main.java.com.transportanalysis.models.ProductVO;
 import main.java.com.transportanalysis.response.ResponseMessage;
 import main.java.com.transportanalysis.services.cargo.CargoService;

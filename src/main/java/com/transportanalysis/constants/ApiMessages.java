@@ -1,4 +1,4 @@
-package main.java.com.transportanalysis.enumeration;
+package main.java.com.transportanalysis.constants;
 
 public class ApiMessages {
 
